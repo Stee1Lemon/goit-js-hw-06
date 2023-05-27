@@ -1,8 +1,6 @@
 const validationInput = document.getElementById("validation-input");
 const validationLength = parseInt(
-  validationInput.getAttribute("data-length"),
-  10
-);
+  validationInput.getAttribute("data-length"));
 console.log(validationLength);
 validationInput.addEventListener("blur", validNumberOfSymbols);
 
