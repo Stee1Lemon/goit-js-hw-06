@@ -10,7 +10,6 @@ console.log(inputNameEl.value);
 
 function isEmpty() {
   if (outputNameEl.textContent === "") {
-      console.log("empty");
       outputNameEl.innerHTML = "Anonymous";
   } 
 }
