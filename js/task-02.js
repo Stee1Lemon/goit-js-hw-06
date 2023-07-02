@@ -14,7 +14,6 @@ const ingredientsList = ingredients.map((ingredient) => {
   ingredientEl.classList.add("item");
   ingredientEl.textContent = ingredient;
   return ingredientEl;
-  
 });
 
 ingredientsEL.append(...ingredientsList);
