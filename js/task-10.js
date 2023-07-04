@@ -9,22 +9,34 @@ const btnDestroyEl = document.querySelector(`[data-destroy]`);
 const amountEl = document.querySelector("input");
 const boxesEl = document.querySelector("#boxes");
 
-btnCreateEl.addEventListener("click", createBoxes);
+btnCreateEl.addEventListener("click", isInRangeNumber);
 btnDestroyEl.addEventListener("click", destroyBoxes);
 
 let boxesArray = [];
+const minNumber = Number(amountEl.min);
+const maxNumber = Number(amountEl.max);
+const stepToNumber = Number(amountEl.step);
+
+function isInRangeNumber(amount) {
+  let amountNum = Number(amountEl.value);
+
+  if (amountNum < minNumber || amountNum > maxNumber) {
+    return (boxesEl.innerHTML =
+      "<p>Be more realistic and try from 1 to 100.</p>");
+  } else {
+    boxesEl.innerHTML = "";
+    createBoxes(amountNum);
+  }
+}
 
 function createBoxes(amount) {
-  amount = amountEl.value;
-  let widthEl = 20;
+  let widthEl = 30;
 
-  for (let i = 1; i <= amount; i++) {
+  for (let i = 0; i < amount; i += stepToNumber) {
     const randomColor = getRandomHexColor();
-
-    widthEl += 10;
-
     const box = `<div style="background-color: ${randomColor}; height: ${widthEl}px; width: ${widthEl}px; margin-bottom: 5px"></div>`;
-
+    
+    widthEl += 10;
     boxesArray.push(box);
   }
 
@@ -35,5 +47,5 @@ function createBoxes(amount) {
 function destroyBoxes() {
   boxesEl.innerHTML = "";
   boxesArray = [];
-  amountEl.value = 0;
+  amountEl.value = "";
 }

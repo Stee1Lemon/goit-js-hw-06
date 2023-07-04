@@ -14,19 +14,21 @@ const images = [
 ];
 
 const galleryEl = document.querySelector(".gallery");
+const liElement = document.querySelectorAll(".gallery, li");
 
 const galleryOfImages = [];
 
-function doGalleryOfImages(array) {
-  array.forEach((item) => {
-    const url = item.url;
-    const alt = item.alt;
-    const htmlEl = `<li><img src="${url}" alt="${alt}"></li>`;
-    galleryOfImages.push(htmlEl);
-  });
-}
+images.map((image) => {
+  const url = image.url;
+  const alt = image.alt;
+  const htmlEl = `<li><img src="${url}" alt="${alt}"></li>`;
+  galleryOfImages.push(htmlEl);
+});
 
-doGalleryOfImages(images);
-const finalGallery = galleryOfImages.join('');
+const galleryOfImagesStr = galleryOfImages.join("");
 
-galleryEl.insertAdjacentHTML("afterbegin", finalGallery);
+liElement.forEach((item) => {
+  item.style.listStyleType = "none";
+});
+
+galleryEl.insertAdjacentHTML("afterbegin", galleryOfImagesStr);

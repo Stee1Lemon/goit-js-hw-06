@@ -1,18 +1,16 @@
 const loginForm = document.querySelector(".login-form");
-const emailFormEl = loginForm.elements["email"];
-const passwordFormEl = loginForm.elements["password"];
 
 loginForm.addEventListener("submit", sendForm);
 
-let usersFormData = [];
+const { email, password } = loginForm;
 
 function sendForm(event) {
   event.preventDefault();
-  blankFields();
+  isBlankFields();
 }
 
-function blankFields() {
-  if (emailFormEl.value === "" || passwordFormEl.value === "") {
+function isBlankFields() {
+  if (email.value === "" || password.value === "") {
     alert("All fields must be filled");
   } else {
     createFormObj();
@@ -20,11 +18,11 @@ function blankFields() {
 }
 
 function createFormObj() {
-  const userFormData = {
-    email: emailFormEl.value,
-    password: passwordFormEl.value,
+  const usersFormData = {
+    email: email.value,
+    password: password.value,
   };
-  usersFormData.push(userFormData);
-  console.log(userFormData);
   loginForm.reset();
+
+  console.log(usersFormData);
 }

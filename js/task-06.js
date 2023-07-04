@@ -4,7 +4,7 @@ const validationLength = parseInt(validationInput.getAttribute("data-length"));
 validationInput.addEventListener("blur", validNumberOfSymbols);
 
 function validNumberOfSymbols() {
-  if (validationInput.value.length === validationLength) {
+  if (validationInput.value.trim().length === validationLength) {
     validationInput.classList.add("valid");
     validationInput.classList.remove("invalid");
   } else {

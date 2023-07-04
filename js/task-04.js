@@ -6,11 +6,11 @@ let counterValue = 0;
 
 decrementBtnEl.addEventListener("click", () => {
     counterValue --;
-    counterValueEl.innerHTML = counterValue;
+    counterValueEl.textContent = counterValue;
 });
 
 incrementBtnEl.addEventListener("click", () => {
   counterValue ++;
-  counterValueEl.innerHTML = counterValue;
+  counterValueEl.textContent = counterValue;
 });
 
