@@ -16,16 +16,14 @@ const images = [
 const galleryEl = document.querySelector(".gallery");
 const liElement = document.querySelectorAll(".gallery, li");
 
-const galleryOfImages = [];
-
-images.map((image) => {
-  const url = image.url;
-  const alt = image.alt;
-  const htmlEl = `<li><img src="${url}" alt="${alt}"></li>`;
-  galleryOfImages.push(htmlEl);
-});
-
-const galleryOfImagesStr = galleryOfImages.join("");
+const galleryOfImagesStr = images
+  .map((image) => {
+    const url = image.url;
+    const alt = image.alt;
+    const htmlEl = `<li><img src="${url}" alt="${alt}"></li>`;
+    return htmlEl;
+  })
+  .join("");
 
 liElement.forEach((item) => {
   item.style.listStyleType = "none";
